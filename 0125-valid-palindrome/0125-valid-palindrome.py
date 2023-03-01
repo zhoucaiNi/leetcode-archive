@@ -14,6 +14,5 @@ class Solution(object):
         t = ""
         while stack:
             t = t+ stack.pop()
-        print(t)
-        print(real_s)
+    
         return t == real_s
