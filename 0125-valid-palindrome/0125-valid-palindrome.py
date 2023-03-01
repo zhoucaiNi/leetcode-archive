@@ -4,15 +4,6 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        stack = []
-        real_s = ""
-        for char in s:
-            if char.isalnum():
-                stack.append(char.lower())
-                real_s += char.lower()
-            
-        t = ""
-        while stack:
-            t = t+ stack.pop()
-    
-        return t == real_s
+        s = "".join(c for c in s if c.isalnum()).lower()
+        
+        return s == s[::-1]
