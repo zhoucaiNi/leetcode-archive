@@ -4,16 +4,12 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n == 0:
-            return 0
         if n == 1:
-            return 1
-        first = 1
-        second = 2
-        i = 3
-        while i <= n:
-            third = first + second
-            first = second
-            second = third
-            i+=1
-        return second
+            return 1;
+        
+        arrList = [0,1,2]
+        
+        for x in range(3, n+1):
+            arrList.append(arrList[x -1] + arrList[x-2])
+            
+        return(arrList[n])
