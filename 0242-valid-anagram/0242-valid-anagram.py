@@ -5,5 +5,10 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        tCount = collections.Counter(s)
+        sCount = collections.Counter(t)
+        if tCount == sCount:
+            return True
+        return False
+    
         
-        return collections.Counter(s) == collections.Counter(t)
