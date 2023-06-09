@@ -4,15 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-
-        t = collections.defaultdict(int)
-
-        for i in nums:
-            if i in t:
+#        turn in to set 
+        hashset = set()
+        for num in nums:
+            if num in hashset:
                 return True
-            t[i] = 1
+            hashset.add(num)
         return False
-    
-
-
+            
         
