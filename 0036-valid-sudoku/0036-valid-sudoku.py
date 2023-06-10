@@ -8,16 +8,11 @@ class Solution:
                 currVal = board[x][y]
                 if currVal in s[x] or currVal in s[9+y] or \
                 currVal in s[18+int(x/3) + 3* int(y/3)]:
-                    print(int(x/3) + 3* int(y/3))
-                    print(currVal)
-                    print(x,y)
-                    print(s)
                     return False
                 elif board[x][y] != ".":
                     s[x].add(currVal)
                     s[y+9].add(currVal)
                     s[18+int(x/3) + 3* int(y/3)].add(currVal)
-        print(s)
         return True
                     
                 
