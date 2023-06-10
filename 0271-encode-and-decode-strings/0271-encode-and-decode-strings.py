@@ -6,10 +6,8 @@ class Codec:
         :type strs: List[str]
         :rtype: str
         """
-        if len(strs) == 0:
-            return unichr(258)
-        
-        return unichr(257).join(x.encode("utf-8") for x in strs)
+        pre = '.'.join(str(len(x)) for x in strs)
+        return pre + "#" + "".join(strs)
         
 
     def decode(self, s):
@@ -18,9 +16,16 @@ class Codec:
         :type s: str
         :rtype: List[str]
         """
-        if s == unichr(258):
-            return []
-        return s.split(unichr(257))
+        before, after = s.split("#", 1)
+        part = before.split(".")
+        res = []
+        t = 0
+        for i in part:
+            i = int(i)
+            res.append(after[t:t+i])
+            t+= i
+        return res
+            
         
 
 # Your Codec object will be instantiated and called as such:
