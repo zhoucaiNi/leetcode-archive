@@ -10,7 +10,7 @@ class Solution(object):
         for char in s:
             if char in d.values():
                 stack.append(char)
-            elif char in d.keys():
+            elif char in d:
                 if stack == [] or d[char] != stack.pop():
                     return False
             else:
