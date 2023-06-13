@@ -7,10 +7,14 @@ class Solution(object):
         l, r, area = 0, len(height)-1, 0
         
         while l <r:
-            area = max(area, min(height[l],height[r]) * abs(r-l))
             if height[l] >= height[r]:
+                temp = height[r] * (r-l)
                 r-=1
+                
             else:
+                temp = height[l] * (r-l)
                 l+=1
+            if temp > area: area = temp
+                
         return area
             
