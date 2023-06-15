@@ -11,7 +11,6 @@ class Solution:
                 start = index
             stack.append((start, h))
             
-        print(stack)
         for i, h in stack:
             maxArea = max(maxArea, (len(heights) -i) * h)
         return maxArea
