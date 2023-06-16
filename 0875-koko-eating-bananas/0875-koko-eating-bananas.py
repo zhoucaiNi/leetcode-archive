@@ -12,9 +12,7 @@ class Solution(object):
             mid = l + ((r-l) // 2)
             # mid = (l+r) // 2
             totalTime = 0
-            for p in piles:
-                totalTime += math.ceil(float(p) / mid)
-            if totalTime <= h:
+            if sum(math.ceil(1.0* p/ mid) for p in piles) <= h:
                 res = min(res, mid)
                 r = mid -1
             else:
