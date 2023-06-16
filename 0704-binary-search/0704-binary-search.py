@@ -5,16 +5,20 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        left = 0
-        right = len(nums) - 1
+        l, r = 0, len(nums)
+     
+        mid = (l + r ) // 2 
         
-        while left <= right:
-            mid = (left + right) // 2
-            if nums[mid] == target:
+        while l != r:
+            print(mid)
+            curr = nums[mid]
+            if target > curr:
+                l = mid + 1
+            elif target < curr:
+                r = mid
+            else: 
                 return mid
-            elif nums[mid] < target:
-                left = mid + 1
-            else:
-                right = mid -1
-        
+            mid = (l + r ) // 2
+            
         return -1
+        
