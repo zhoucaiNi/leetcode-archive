@@ -9,8 +9,6 @@ class Solution(object):
         
         for i in range(len(s)):
             if s[i] not in seen:
-                print(s[i],"not in see")
-                print(i - left + 1)
                 res = max(res, i - left + 1)
             else:
                 if seen[s[i]] < left:
