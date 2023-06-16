@@ -10,7 +10,6 @@ class Solution(object):
         mid = (l + r ) // 2 
         
         while l != r:
-            print(mid)
             curr = nums[mid]
             if target > curr:
                 l = mid + 1
