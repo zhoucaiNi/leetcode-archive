@@ -10,24 +10,23 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        
-        head = ListNode(-1)
-        newList = head
+        temp = ListNode()
+        tail = temp 
         
         while list1 and list2:
-            if list1.val > list2.val:
-                newList.next = list2
-                list2 = list2.next
-            else:
-                newList.next = list1
+            if list1.val < list2.val:
+                tail.next = list1
                 list1 = list1.next
-                
-            newList = newList.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
             
         if list1:
-            newList.next = list1
+            tail.next = list1
+        elif list2:
+            tail.next = list2
             
-        if list2: 
-            newList.next = list2
-            
-        return head.next
+        return temp.next
+                
+        
