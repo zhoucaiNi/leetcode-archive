@@ -10,7 +10,7 @@ class Solution(object):
         :rtype: None Do not return anything, modify head in-place instead.
         """
 #         step 1: find middle
-        if not head: return []
+        if not head: return 
         slow, fast = head, head
         while fast.next and fast.next.next:
             slow = slow.next
