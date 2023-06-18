@@ -29,8 +29,6 @@ class Solution(object):
                 l+=1
                 r+=1
                 s2Count[s2[r]] += 1
-        print(s1Count)
-        print(s2Count)
         return s1Count == s2Count
                 
             
