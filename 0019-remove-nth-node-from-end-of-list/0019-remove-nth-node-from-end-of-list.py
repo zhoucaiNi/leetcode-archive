@@ -10,22 +10,19 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        prev, stack, placeholder = None, [], head
-        while head:
-            stack.append(head)
-            head = head.next
-            
-        while stack and n > 1:
-            prev = stack.pop()
+        dummy = ListNode(0, head)
+        left = dummy
+        right = head
+        
+        while n>0:
+            right = right.next
             n-=1
             
-        stack.pop()
-        if stack: 
-            stack.pop().next = prev
-        else:
-            return prev
-        return placeholder
-        
+        while right:
+            left = left.next
+            right = right.next
             
-            
+        #delete
+        left.next = left.next.next
+        return dummy.next
         
