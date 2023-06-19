@@ -4,10 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        t= set()
+#       find the cycle
+        slow, fast = 0 ,0 
+        print(slow,fast)
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            print(slow,fast)
+            if slow == fast:
+                break
+                
+        slow2 = 0
+        while True:
+            slow2 = nums[slow2]
+            slow = nums[slow]
+            if slow == slow2:
+                return slow
+            
         
-        for i in nums:
-            if i in t:
-                return i
-            else:
-                t.add(i)
+        return slow
