@@ -9,8 +9,7 @@ class Solution(object):
         q = collections.deque()
         l, r = 0,0
         while r < len(nums):
-            # if index is 
-            
+            # if keep popping untill current num is less than 
             while q and nums[q[-1]] < nums[r]:
                 q.pop()
             
@@ -25,7 +24,6 @@ class Solution(object):
                 res.append(nums[q[0]])
                 l+=1
             r+=1
-            # print(q)
         return res
             
         
