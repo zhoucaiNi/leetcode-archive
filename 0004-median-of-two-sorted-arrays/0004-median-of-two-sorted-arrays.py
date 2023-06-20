@@ -28,9 +28,7 @@ class Solution(object):
             # checks for 
             if aLeft <= bRight and bLeft <= aRight:
                 # odd
-                
                 if arrayLen % 2:
-                    print(min(bRight, aRight))
                     return min(bRight, aRight)
                 # even
                 else:
