@@ -13,15 +13,11 @@ class Solution(object):
         """
         if not p and not q:
             return True
-        
-        if not q or not p:
+        if p and q and p.val == q.val:
+            left = self.isSameTree(p.left, q.left)
+            right = self.isSameTree(p.right, q.right)
+            return left and right
+        else:
             return False
-        
-        if p.val != q.val:
-            return False
-        
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
             
-
-        
         
