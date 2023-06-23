@@ -20,7 +20,6 @@ class Solution(object):
             dfs(node.right)
 
             self.res.append(node.val)
-            print(node.val)
             
         dfs(root)
         return self.res
