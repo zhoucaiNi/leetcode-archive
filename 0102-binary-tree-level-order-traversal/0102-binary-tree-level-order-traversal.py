@@ -28,10 +28,8 @@ class Solution(object):
                 
                 if curr.right:
                     q.append(curr.right)
-                    
             
             res.append(val)
-            
             
         return res
         
