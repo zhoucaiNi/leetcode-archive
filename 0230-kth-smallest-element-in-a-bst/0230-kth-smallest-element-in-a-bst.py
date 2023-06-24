@@ -11,10 +11,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-            
         stack = []
         curr = root
-
+        
         while stack or curr:
             while curr:
                 stack.append(curr)
@@ -23,7 +22,7 @@ class Solution(object):
             k -= 1
             if k == 0:
                 return curr.val
+            
             curr = curr.right
             
-        
         
