@@ -16,10 +16,10 @@ class Solution(object):
             if not(root.val > left and root.val < right):
                 return False
             
-            left = valid(root.left, left, root.val)
-            right = valid(root.right, root.val, right)
+            leftValid = valid(root.left, left, root.val)
+            rightValid = valid(root.right, root.val, right)
             
-            return left and right
+            return leftValid and rightValid
         
         return valid(root, float("-inf"), float("inf"))
         
