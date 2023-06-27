@@ -36,14 +36,14 @@ class Codec:
         :rtype: TreeNode
         """
         vals = data.split(",")
-        self.i = 0 
+        i = [0]
         
-        def dfs():
-            if vals[self.i] == "N":
-                self.i+=1
+        def dfs(): 
+            if vals[i[0]] == "N":
+                i[0]+=1
                 return None
-            node = TreeNode(int(vals[self.i]))
-            self.i += 1
+            node = TreeNode(int(vals[i[0]]))
+            i[0] += 1
             node.left = dfs()
             node.right = dfs()
             return node
