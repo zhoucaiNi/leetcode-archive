@@ -1,59 +1,43 @@
-class TrieNode():
-    def __init__(self):
-        self.children = [None] * 26
-        self.end = False
-
-
-class Trie(object):
+class Trie:
 
     def __init__(self):
-        self.head = TrieNode()
+        self.root = {}
+        
 
-    def insert(self, word):
-        """
-        :type word: str
-        :rtype: None
-        """
-        curr = self.head
+    def insert(self, word: str) -> None:
+        cur = self.root
         for c in word:
-            i = ord(c) - ord("a")
-            if curr.children[i] == None:
-                curr.children[i] = TrieNode()
-            curr = curr.children[i]
-        curr.end = True
+            try:
+                cur = cur[c]
+            except:
+                cur[c] = {}
+                cur = cur[c]
+        cur["."] = "."
+        
+
+    def search(self, word: str) -> bool:
+        cur = self.root
+        word += "."
+        for c in word:
+            try:
+                cur[c]
+            except KeyError:
+                return False
+            cur = cur[c]
             
-        
-
-    def search(self, word):
-        """
-        :type word: str
-        :rtype: bool
-        """
-        curr = self.head
-        for c in word:
-            i = ord(c) - ord("a")
-            if curr.children[i] == None:
-                return False
-            curr = curr.children[i]
-        
-        if curr.end:
-            return True
-        
-
-    def startsWith(self, prefix):
-        """
-        :type prefix: str
-        :rtype: bool
-        """
-        curr = self.head
-        for c in prefix:
-            i = ord(c) - ord("a")
-            if curr.children[i] == None:
-                return False
-            curr = curr.children[i]
-                
         return True
         
+
+    def startsWith(self, prefix: str) -> bool:
+        cur = self.root
+        for c in prefix:
+            try:
+                cur[c]
+            except KeyError:
+                return False
+            cur = cur[c]
+            
+        return True
         
 
 
