@@ -31,9 +31,9 @@ class WordDictionary:
                     return False
                     
             if index == len(word):
-                try:
-                    return "word" in cur
-                except:
+                if "word" in cur:
+                    return True
+                else:
                     return False
             cur = cur[word[index]]
             return dfs(index + 1, cur)
