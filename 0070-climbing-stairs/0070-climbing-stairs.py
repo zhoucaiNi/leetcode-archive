@@ -1,15 +1,12 @@
-class Solution(object):
-    def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        if n == 1:
-            return 1;
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        one, two = 1, 1
         
-        arrList = [0,1,2]
-        
-        for x in range(3, n+1):
-            arrList.append(arrList[x -1] + arrList[x-2])
+        for i in range(n-1):
+            temp = one
+            one = one + two 
+            two = temp
             
-        return(arrList[n])
+        return one
+        
+        
