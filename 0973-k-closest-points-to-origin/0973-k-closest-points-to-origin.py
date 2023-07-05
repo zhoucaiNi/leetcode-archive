@@ -3,7 +3,7 @@ class Solution:
         # make a minHeap of size k 
         pts = []
         for x,y in points:
-            distance = math.sqrt((x ** 2) + (y ** 2))
+            distance = ((x ** 2) + (y ** 2))
             pts.append([distance,x,y])
         
         # iterate thry all the points and add to heap 
