@@ -10,9 +10,8 @@ class Solution:
         
         def bfs(r,c):
             if (
-                min(r, c) < 0
-                or r == ROWS
-                or c == COLS
+                r not in range(ROWS) 
+                or c not in range(COLS)
                 or (r, c) in seen
                 or rooms[r][c] == -1
             ):
