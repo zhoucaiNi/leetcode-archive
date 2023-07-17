@@ -11,7 +11,7 @@ class Solution:
             while p != par[p]:
                 par[p] = par[par[p]]
                 p = par[p]
-            print("parent of " + str(n) + " is " + str(p))
+            # print("parent of " + str(n) + " is " + str(p))
             return p
         
         def union(n1, n2):
