@@ -1,16 +1,17 @@
-class Solution(object):
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
+class Solution:
+    def isValid(self, s: str) -> bool:
+        valid = {")": "(", "]": "[", "}": "{"}
         stack = []
-        d = {"]":"[", "}":"{", ")":"("}
         
-        for char in s:
-            if char in d.values():
-                stack.append(char)
-            elif stack == [] or d[char] != stack.pop() :   
+        for c in s:
+            if c not in valid:
+                stack.append(c)
+                continue
+            if not stack or stack[-1] != valid[c]:
                 return False
-        return stack == []
-                
+            stack.pop()
+            
+        print(stack)
+        return not stack
+            
+            
