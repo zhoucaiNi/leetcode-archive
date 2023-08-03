@@ -13,7 +13,6 @@ class Solution:
             
             for r, c in directions:
                 newR, newC = row + r, col + c
-                # print(newR, newC)
                 if not (newR >= R or
                     newC >= C or 
                     newR < 0 or 
@@ -21,13 +20,11 @@ class Solution:
                     matrix[newR][newC] <= matrix[row][col]):
                     res = max(dfs(newR, newC) + 1, res)
                     
-            # print("wtf")
             dp[(row,col)] = res
             return res
                     
         for i in range(R):
             for j in range(C):
-                # print(i,j)
                 dfs(i,j)
         print(dp)
         return max(dp.values())
