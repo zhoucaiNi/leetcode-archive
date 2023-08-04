@@ -26,7 +26,7 @@ class Solution:
         for i in range(R):
             for j in range(C):
                 dfs(i,j)
-        print(dp)
+        # print(dp)
         return max(dp.values())
             
             
