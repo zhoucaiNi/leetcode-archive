@@ -3,7 +3,6 @@ class Solution:
         seen = set()
         
         while n not in seen:
-            print(n)
             if n == 1:
                 return True
             
