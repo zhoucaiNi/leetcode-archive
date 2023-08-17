@@ -21,7 +21,7 @@ class Solution:
         while beg < len(res) and res[beg] == 0:
             beg+=1
             
-        print(res[beg:])
+
         res = map(str, res[beg:]) 
-        # print(res)
+
         return "".join(res)
