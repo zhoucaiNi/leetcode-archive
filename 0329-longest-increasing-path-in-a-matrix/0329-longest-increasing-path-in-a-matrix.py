@@ -1,34 +1,17 @@
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
-        dp = {} # (rol, col) -> longestIncreasingPath
-        
-        directions = [[0,1], [1,0], [-1,0], [0,-1]]
-        R = len(matrix)
-        C = len(matrix[0])
-        
-        def dfs(row, col):
-            res = 1
-            if (row,col) in dp:
-                return dp[(row, col)]
-            
-            for r, c in directions:
-                newR, newC = row + r, col + c
-                if not (newR >= R or
-                    newC >= C or 
-                    newR < 0 or 
-                    newC < 0 or 
-                    matrix[newR][newC] <= matrix[row][col]):
-                    res = max(dfs(newR, newC) + 1, res)
-                    
-            dp[(row,col)] = res
-            return res
-                    
-        for i in range(R):
-            for j in range(C):
-                dfs(i,j)
-        # print(dp)
-        return max(dp.values())
-            
-            
-            
-        
+        m, n = len(matrix), len(matrix[0])
+        length_paths = [[-1] * n for _ in range(m)]
+
+        def check_cell(i: int, j: int, prev: int) -> int:
+            if i < 0 or j < 0 or i >= m or j >= n or prev >= matrix[i][j]:
+                return 0
+            if length_paths[i][j] == -1:
+                length_paths[i][j] = max(check_cell(i, j - 1, matrix[i][j]),
+                    check_cell(i, j + 1, matrix[i][j]),
+                    check_cell(i - 1, j, matrix[i][j]),
+                    check_cell(i + 1, j, matrix[i][j]))
+            return length_paths[i][j] + 1
+
+        gen = (check_cell(i, j, -1) for i in range(m) for j in range(n))
+        return max(gen)
