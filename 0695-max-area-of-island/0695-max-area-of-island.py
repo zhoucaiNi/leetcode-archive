@@ -1,33 +1,35 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        seen = set()
-        maxArea = 0
-        ROWS, COLS = len(grid), len(grid[0])
+       
+        
+        island = 0
+        visit = set()
+        highestArea = 0
+        rows, cols = len(grid), len(grid[0])
         
         def dfs(r,c):
             if (
-                r not in range(ROWS) or
-                c not in range(COLS) or 
-                (r,c) in seen or 
+                r not in range(rows) or 
+                c not in range(cols) or 
+                (r,c) in visit or 
                 grid[r][c] == 0
             ):
-                return 0 
+                return 0
             
-            seen.add((r,c))
-            return 1 + dfs(r+1,c) + dfs(r-1, c) + dfs(r, c+1) + dfs(r, c-1)
-        
-        for r in range(ROWS):
-            for c in range(COLS):
-                if (
-                    (r,c) not in seen and
-                    grid[r][c] == 1
-                   ):
-                    maxArea = max(maxArea, dfs(r,c))
+            visit.add((r,c))
+            directions = [[1,0], [-1,0], [0,1], [0, -1]]
+            totalCount = 0
+            for dr, dc in directions:
+                totalCount += dfs(dr + r, dc + c)
                 
-        
-        
-        
+            return totalCount + 1
+                
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1 and (r,c) not in visit:
+                    highestArea = max(highestArea, dfs(r, c))
+                    
+        return highestArea
+                
             
-            
         
-        return maxArea
