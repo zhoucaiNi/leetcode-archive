@@ -1,9 +1,10 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        s = "".join(c for c in s if c.isalnum()).lower()
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        new = ''
+        for a in s:
+            if a.isalpha() or a.isdigit():
+                new += a.lower()
+                
+        return (new == new[::-1])
         
-        return s == s[::-1]
+        
